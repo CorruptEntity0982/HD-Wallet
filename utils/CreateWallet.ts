@@ -24,7 +24,7 @@ class Wallet {
     const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
     return {
       publicKey: Keypair.fromSecretKey(secret).publicKey.toBase58(),
-      privateKey: secret.toString(),
+      privateKey: Buffer.from(secret).toString("hex"),
     };
   }
 
@@ -37,7 +37,7 @@ class Wallet {
     const hdNode = HDNodeWallet.fromPhrase(phrase, "", path);
     return {
       publicKey: hdNode.address,
-      privateKey: hdNode.privateKey,
+      privateKey: hdNode.privateKey
     };
   }
 }

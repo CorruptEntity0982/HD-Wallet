@@ -1,5 +1,5 @@
 interface ShowAddressesProps {
-    addresses: string[];
+    addresses: [string, string][];
 }
 
 
@@ -10,7 +10,8 @@ export default function ShowAddresses({addresses}: ShowAddressesProps) {
             <ul>
                 {addresses.map((address, index) => (
                     <li key={index}>
-                        {index + 1}. {address}
+                        <div>{index + 1}. Public Key: {address[0]}</div>
+                        <div>Private Key: {address[1]}</div>
                     </li>
                 ))}
             </ul>

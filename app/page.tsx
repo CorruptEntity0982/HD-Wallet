@@ -6,10 +6,8 @@ import { ShowPhrase } from "@/components/ShowPhrase";
 import ShowAddresses from "@/components/showAddresses";
 
 export default function Home() {
-  const [solanaAddresses, setAddresses] = React.useState<string[]>([]);
-  const [etheriumAddresses, setEtheriumAddresses] = React.useState<string[]>(
-    []
-  );
+  const [solanaAddresses, setAddresses] = React.useState<[string, string][]>([]);
+  const [etheriumAddresses, setEtheriumAddresses] = React.useState<[string, string][]>([]);
   const [solIndex, setIndex] = React.useState(0);
   const [ethIndex, setEthIndex] = React.useState(0);
   const [phrase] = React.useState(new Mnemonic().phrase);
@@ -27,7 +25,7 @@ export default function Home() {
         <button
           onClick={() => {
             const wallet = createWallet(phrase, 501, solIndex, "sol");
-            setAddresses([...solanaAddresses, wallet.publicKey]);
+            setAddresses([...solanaAddresses, [wallet.publicKey, wallet.privateKey]]);
             setIndex(solIndex + 1);
           }}
         >
@@ -40,7 +38,7 @@ export default function Home() {
         <button
           onClick={() => {
             const wallet = createWallet(phrase, 60, ethIndex, "eth");
-            setEtheriumAddresses([...etheriumAddresses, wallet.publicKey]);
+            setEtheriumAddresses([...etheriumAddresses, [wallet.publicKey, wallet.privateKey]]);
             setEthIndex(ethIndex + 1);
           }}
         >
