@@ -12,6 +12,9 @@ export default function ShowAddresses({addresses}: ShowAddressesProps) {
                     <li key={index}>
                         <div>{index + 1}. Public Key: {address[0]}</div>
                         <div>Private Key: {address[1]}</div>
+                        <div>
+                            <button>Check Balance</button>
+                        </div>
                     </li>
                 ))}
             </ul>
