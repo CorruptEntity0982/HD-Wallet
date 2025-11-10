@@ -32,7 +32,7 @@ export default function Home() {
           Create New Solana Address
         </button>
         <div>
-          <ShowAddresses addresses={solanaAddresses} />
+          <ShowAddresses addresses={solanaAddresses} chain="sol" />
         </div>
 
         <button
@@ -45,7 +45,7 @@ export default function Home() {
           Create New Etherium Address
         </button>
         <div>
-          <ShowAddresses addresses={etheriumAddresses} />
+          <ShowAddresses addresses={etheriumAddresses} chain="eth" />
         </div>
       </main>
     </div>
