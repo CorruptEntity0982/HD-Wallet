@@ -10,7 +10,12 @@ export default function Home() {
   const [etheriumAddresses, setEtheriumAddresses] = React.useState<[string, string][]>([]);
   const [solIndex, setIndex] = React.useState(0);
   const [ethIndex, setEthIndex] = React.useState(0);
-  const [phrase] = React.useState(new Mnemonic().phrase);
+  const [phrase, setPhrase] = React.useState<string>("");
+
+  // Generate mnemonic only on client side to avoid hydration mismatch
+  React.useEffect(() => {
+    setPhrase(new Mnemonic().phrase);
+  }, []);
 
   return (
     <div>

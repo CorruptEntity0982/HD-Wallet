@@ -4,6 +4,16 @@ interface ShowPhraseProps {
 
 export function ShowPhrase({ phrase }: ShowPhraseProps) {
     const words = phrase.split(" ");
+    
+    if (!phrase) {
+        return (
+            <div>
+                <h3>Your Mnemonic Phrase:</h3>
+                <p>Generating...</p>
+            </div>
+        );
+    }
+    
     return (
         <div>
             <h3>Your Mnemonic Phrase:</h3>

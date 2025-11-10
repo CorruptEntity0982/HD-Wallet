@@ -3,7 +3,7 @@ import { JsonRpcProvider, N } from "ethers";
 
 export async function checkSolanaBalance(publicKey: string): Promise<number> {
     try{
-        const rpcUrl = process.env.NEXT_PUBLIC_SOLANA_DEV_RPC_URL || clusterApiUrl("devnet");
+        const rpcUrl = process.env.NEXT_PUBLIC_SOLANA_DEV_RPC_URL ||  clusterApiUrl("devnet");
         const connection = new Connection(rpcUrl, "confirmed");
         const address = new PublicKey(publicKey);
         const balance = await connection.getBalance(address);
