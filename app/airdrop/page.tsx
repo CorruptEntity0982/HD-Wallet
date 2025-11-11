@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import {
   ConnectionProvider,
   WalletProvider,
@@ -10,20 +11,22 @@ import {
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
-import AirDrop from "@/components/Airdrop";
+import AirDrop from "@/components/SolAirdrop";
+import SolBalance from "@/components/SolBalance";
+import SolTransaction from "@/components/SolTransaction";
 
 export default function AirdropAdapter() {
-  const endpoint =
-    process.env.NEXT_PUBLIC_SOLANA_NETWORK ||
-    clusterApiUrl(WalletAdapterNetwork.Devnet);
+  const [balance, setBalance] = React.useState<number | null>(null);
 
   return (
-    <ConnectionProvider endpoint={"https://solana-devnet.g.alchemy.com/v2/zEByxYoAeae1DmrP_R1iN"}>
+    <ConnectionProvider endpoint={clusterApiUrl(WalletAdapterNetwork.Devnet)}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
           <WalletMultiButton />
           <WalletDisconnectButton />
-          <AirDrop />
+          <AirDrop></AirDrop>
+          <SolBalance balance={balance} setBalance={setBalance} />
+          <SolTransaction balance={balance} refreshBalance={() => setBalance(null)} />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

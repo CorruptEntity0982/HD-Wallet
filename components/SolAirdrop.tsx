@@ -5,25 +5,24 @@ import { useState } from "react";
 
 export default function AirDrop() {
   const wallet = useWallet();
+  const [amount, setAmount] = useState("");
   const { connection } = useConnection();
-  const [amount, setAmount] = useState<string>("");
 
   async function sendAirDropToUser() {
-    if (wallet.publicKey) {
-      const airdropAmount = parseFloat(amount);
-      try {
-        await connection.requestAirdrop(
-          wallet.publicKey,
-          airdropAmount * LAMPORTS_PER_SOL
-        );
-        alert(`Airdrop of ${airdropAmount} SOL requested successfully!`);
-      } catch (error) {
-        alert(`Airdrop failed: ${error}`);
-      }
-    } else {
-      alert("Wallet not connected");
+    if (!wallet.publicKey) {
+      alert("Please connect your wallet!");
+      return;
+    }
+    try{
+      const amountInLamports = parseFloat(amount) * LAMPORTS_PER_SOL;
+      const signature = await connection.requestAirdrop(wallet.publicKey, amountInLamports);
+      alert(`Airdrop of ${amount} SOL requested. Transaction signature: ${signature}`);
+    }
+    catch(error){
+      alert(`Airdrop failed: ${error}`);
     }
   }
+
   return (
     <div>
       Connected Wallet Address:{" "}
@@ -32,8 +31,8 @@ export default function AirDrop() {
         <input
           id="publicKey"
           type="number"
-          placeholder="Amount to Airdrop"
-          value={amount}
+          placeholder="amount"
+          value = {amount}
           onChange={(e) => setAmount(e.target.value)}
         />
         <button onClick={sendAirDropToUser}>Airdrop</button>
