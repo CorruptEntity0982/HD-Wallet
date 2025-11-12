@@ -1,5 +1,5 @@
 import { Connection, PublicKey, LAMPORTS_PER_SOL, clusterApiUrl } from "@solana/web3.js";
-import { JsonRpcProvider, N } from "ethers";
+import { JsonRpcProvider } from "ethers";
 
 export async function checkSolanaBalance(publicKey: string): Promise<number> {
     try{
