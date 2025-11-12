@@ -12,7 +12,6 @@ export default function Home() {
   const [ethIndex, setEthIndex] = React.useState(0);
   const [phrase, setPhrase] = React.useState<string>("");
 
-  // Generate mnemonic only on client side to avoid hydration mismatch
   React.useEffect(() => {
     setPhrase(new Mnemonic().phrase);
   }, []);
