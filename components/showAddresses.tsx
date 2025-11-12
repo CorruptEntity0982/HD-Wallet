@@ -1,5 +1,5 @@
 "use client";
-import { checkBalance } from "@/utils/rpc_functions/CheckBalance";
+import { checkBalance } from "@/utils/CheckBalance";
 import { useState } from "react";
 
 interface ShowAddressesProps {
