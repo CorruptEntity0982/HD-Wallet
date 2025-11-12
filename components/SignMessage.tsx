@@ -24,7 +24,7 @@ export default function SignMessage() {
             alert("Signature verification failed");
             return;
         }
-        alert(`Message signed successfully: ${Buffer.from(signature).toString("hex")}`);
+        alert(`Message verified successfully: ${Buffer.from(signature).toString("hex")}`);
     }
     return (
         <div>

@@ -22,8 +22,15 @@ export default function AirdropAdapter() {
     <ConnectionProvider endpoint={clusterApiUrl(WalletAdapterNetwork.Devnet)}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
-          <WalletMultiButton />
-          <WalletDisconnectButton />
+          <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: 20
+            }}>
+                <WalletMultiButton />
+                <h1>Send and Airdrop Solana</h1>
+                <WalletDisconnectButton />
+            </div>
           <AirDrop></AirDrop>
           <SolBalance balance={balance} setBalance={setBalance} />
           <SolTransaction balance={balance} refreshBalance={() => setBalance(null)} />
