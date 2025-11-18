@@ -17,7 +17,7 @@ export default function SolBalance({ balance, setBalance }: SolBalanceProps) {
         setBalance(null);
         return;
       }
-      
+
       try {
         const solBalance = await connection.getBalance(wallet.publicKey);
         setBalance(solBalance / LAMPORTS_PER_SOL);
@@ -26,12 +26,29 @@ export default function SolBalance({ balance, setBalance }: SolBalanceProps) {
         setBalance(null);
       }
     }
-    
+
     getBalance();
     const interval = setInterval(getBalance, 10000);
-    
+
     return () => clearInterval(interval);
   }, [wallet.publicKey, connection, setBalance]);
 
-  return <div>Your Sol Balance is: {balance !== null ? `${balance} SOL` : 'Loading...'}</div>;
+  const panelStyle: React.CSSProperties = {
+    borderRadius: "20px",
+    border: "1px solid rgba(148,163,184,0.2)",
+    background: "rgba(15,23,42,0.7)",
+    padding: "18px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+  };
+
+  return (
+    <div style={panelStyle}>
+      <span style={{ color: "#94a3b8" }}>Current Devnet Balance</span>
+      <strong style={{ fontSize: "1.5rem" }}>
+        {balance !== null ? `${balance} SOL` : "Loading..."}
+      </strong>
+    </div>
+  );
 }

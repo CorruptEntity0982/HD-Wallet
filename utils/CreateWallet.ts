@@ -1,7 +1,6 @@
 import { mnemonicToSeedSync } from "bip39";
 import nacl from "tweetnacl";
 import { Keypair } from "@solana/web3.js";
-import { HDNodeWallet, Wallet as EthWallet } from "ethers";
 import { derivePath } from "ed25519-hd-key";
 
 class Wallet {
@@ -28,34 +27,13 @@ class Wallet {
     };
   }
 
-  static generateEthAddress(
-    phrase: string,
-    coin: number,
-    index: number
-  ): { publicKey: string; privateKey: string } {
-    const path = `m/44'/${coin}'/${index}'/0/0`;
-    const hdNode = HDNodeWallet.fromPhrase(phrase, "", path);
-    return {
-      publicKey: hdNode.address,
-      privateKey: hdNode.privateKey
-    };
-  }
 }
 
 export function createWallet(
   phrase: string,
   coin: number,
-  index: number,
-  type: "sol" | "eth"
+  index: number
 ): Wallet {
-  if (type === "eth") {
-    const { publicKey, privateKey } = Wallet.generateEthAddress(
-      phrase,
-      coin,
-      index
-    );
-    return new Wallet(publicKey, privateKey);
-  }
   const { publicKey, privateKey } = Wallet.generateAddress(phrase, coin, index);
   return new Wallet(publicKey, privateKey);
 }
