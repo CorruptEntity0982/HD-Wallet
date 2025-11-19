@@ -6,9 +6,7 @@ import { ShowPhrase } from "@/components/ShowPhrase";
 import ShowAddresses from "@/components/ShowAddresses";
 
 export default function Home() {
-  const [solanaAddresses, setAddresses] = React.useState<[string, string][]>(
-    []
-  );
+  const [solanaAddresses, setAddresses] = React.useState<[string, string][]>([]);
   const [solIndex, setIndex] = React.useState(0);
   const [phrase, setPhrase] = React.useState<string>("");
 
