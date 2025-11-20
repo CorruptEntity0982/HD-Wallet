@@ -82,6 +82,11 @@ export default function Home() {
       title: "Airdrop",
       body: "Request SOL, check balances, and send devnet transfers.",
     },
+    {
+      href: "/token-pda",
+      title: "Token PDA",
+      body: "Derive PDAs for token accounts and associated token addresses.",
+    },
   ];
 
   const workflow = [

@@ -94,6 +94,9 @@ export default function RootLayout({
               <Link href="/airdrop" style={linkStyle}>
                 Airdrop
               </Link>
+              <Link href="/token-pda" style={linkStyle}>
+                Token PDA
+              </Link>
             </nav>
           </div>
         </header>
