@@ -76,7 +76,7 @@ export default function RootLayout({
                 letterSpacing: "0.02em",
               }}
             >
-              CryptoWallet
+              SolDeck
             </Link>
             <nav style={navStyle}>
               <Link href="/" style={linkStyle}>

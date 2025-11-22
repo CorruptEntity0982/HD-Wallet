@@ -7,6 +7,7 @@ import {
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
+import CreatePdaAccounts from "@/components/CreatePdaAccounts";
 
 export default function TokenPdaPage() {
   return (
@@ -15,6 +16,7 @@ export default function TokenPdaPage() {
         <WalletModalProvider>
           <WalletMultiButton />
           <WalletDisconnectButton />
+          <CreatePdaAccounts />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
