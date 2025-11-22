@@ -3,7 +3,7 @@ import { createWallet } from "@/utils/CreateWallet";
 import React from "react";
 import { Mnemonic } from "@/utils/CreateMnemonic";
 import { ShowPhrase } from "@/components/ShowPhrase";
-import ShowAddresses from "@/components/ShowAddresses";
+import { ShowAddresses }  from "@/components/ShowAddresses";
 
 export default function Home() {
   const [solanaAddresses, setAddresses] = React.useState<[string, string][]>([]);

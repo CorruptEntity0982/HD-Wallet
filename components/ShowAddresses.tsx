@@ -7,7 +7,7 @@ interface ShowAddressesProps {
 }
 
 
-export default function ShowAddresses({addresses}: ShowAddressesProps) {
+export function ShowAddresses({addresses}: ShowAddressesProps) {
     const [balances, setBalances] = useState<{ [key: string]: number | null }>({});
     const [loading, setLoading] = useState<{ [key: string]: boolean }>({});
 
