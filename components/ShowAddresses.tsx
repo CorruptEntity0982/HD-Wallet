@@ -104,6 +104,8 @@ export function ShowAddresses({ addresses }: ShowAddressesProps) {
               >
                 Copy Private Key
               </button>
+            </div>
+            <div>
               {balances[address[0]] !== undefined && (
                 <div>
                   Balance:{" "}
