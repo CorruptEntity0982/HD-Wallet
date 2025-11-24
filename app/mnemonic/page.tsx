@@ -3,16 +3,17 @@ import { createWallet } from "@/utils/CreateWallet";
 import React from "react";
 import { Mnemonic } from "@/utils/CreateMnemonic";
 import { ShowPhrase } from "@/components/ShowPhrase";
-import { ShowAddresses }  from "@/components/ShowAddresses";
+import { ShowAddresses } from "@/components/ShowAddresses";
+import { ToastContainer, toast } from "react-toastify";
+import MnemonicOverlay from "@/components/MnemonicOverlay";
 
 export default function Home() {
-  const [solanaAddresses, setAddresses] = React.useState<[string, string][]>([]);
+  const [solanaAddresses, setAddresses] = React.useState<[string, string][]>(
+    []
+  );
   const [solIndex, setIndex] = React.useState(0);
   const [phrase, setPhrase] = React.useState<string>("");
-
-  React.useEffect(() => {
-    setPhrase(new Mnemonic().phrase);
-  }, []);
+  const [isOverlayOpen, setIsOverlayOpen] = React.useState(false);
 
   const pageStyle: React.CSSProperties = {
     display: "flex",
@@ -90,18 +91,25 @@ export default function Home() {
           Generate, inspect, and derive Solana keypairs deterministically.
         </h1>
         <p style={{ margin: 0, color: "#cbd5f5" }}>
-          Every route in the app can reuse this phrase. Reset it anytime to
-          start a new deterministic session.
+          Enter your own mnemonic phrase or generate a new one.
         </p>
         <div style={actionsRow}>
           <button style={primaryButton} onClick={regenerate}>
-            Regenerate Phrase
+            Generate Phrase
+          </button>
+          <button style={primaryButton} onClick={() => setIsOverlayOpen(true)}>
+            Enter Phrase
           </button>
           <button
             style={{ ...secondaryButton, borderStyle: "dashed" }}
             onClick={() => {
               if (!phrase || typeof navigator === "undefined") return;
               navigator.clipboard.writeText(phrase);
+              toast.success("Phrase copied to clipboard!", {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+              });
             }}
             disabled={!phrase}
           >
@@ -144,6 +152,17 @@ export default function Home() {
         </button>
         <ShowAddresses addresses={solanaAddresses} />
       </section>
+
+      <MnemonicOverlay
+        isOpen={isOverlayOpen}
+        onClose={() => setIsOverlayOpen(false)}
+        setPhrase={(newPhrase) => {
+          setPhrase(newPhrase);
+          setAddresses([]);
+          setIndex(0);
+        }}
+      />
+      <ToastContainer />
     </div>
   );
 }

@@ -38,7 +38,7 @@ export function ShowPhrase({ phrase }: ShowPhraseProps) {
         return (
             <div style={cardStyle}>
                 <h3 style={{ margin: 0 }}>Your Mnemonic Phrase</h3>
-                <p style={{ margin: 0, color: "#94a3b8" }}>Generating...</p>
+                <p style={{ margin: 0, color: "#94a3b8" }}>Generate or enter a phrase</p>
             </div>
         );
     }
