@@ -1,0 +1,23 @@
+name: Enforce Branch Policy
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch merge rules
+        run: |
+          TARGET=${{ github.event.pull_request.base.ref }}
+          SOURCE=${{ github.event.pull_request.head.ref }}
+          echo "Checking PR from $SOURCE to $TARGET"
+
+          if [ "$TARGET" = "main" ]; then
+            if [ "$SOURCE" != "dev" ]; then
+              echo "❌ Only 'dev' can merge into 'main'"
+              exit 1
+            fi
+          fi
+
+          echo "✅ Branch merge rule passed"
