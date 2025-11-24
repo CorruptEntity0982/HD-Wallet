@@ -23,7 +23,7 @@ class Wallet {
     const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
     return {
       publicKey: Keypair.fromSecretKey(secret).publicKey.toBase58(),
-      privateKey: Buffer.from(secret).toString("hex"),
+      privateKey: Buffer.from(secret).toBase64(),
     };
   }
 
