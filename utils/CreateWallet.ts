@@ -2,6 +2,7 @@ import { mnemonicToSeedSync } from "bip39";
 import nacl from "tweetnacl";
 import { Keypair } from "@solana/web3.js";
 import { derivePath } from "ed25519-hd-key";
+import bs58 from "bs58";
 
 class Wallet {
   publicKey: string;
@@ -23,7 +24,7 @@ class Wallet {
     const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
     return {
       publicKey: Keypair.fromSecretKey(secret).publicKey.toBase58(),
-      privateKey: Buffer.from(secret).toString("hex"),
+      privateKey: bs58.encode(secret)
     };
   }
 
