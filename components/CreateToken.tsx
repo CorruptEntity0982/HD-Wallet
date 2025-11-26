@@ -35,13 +35,15 @@ export default function TokenPage() {
     background: "rgba(2,6,23,0.85)",
     color: "#f8fafc",
     fontSize: "0.95rem",
+    boxSizing: "border-box",
   };
 
   const primaryButton: React.CSSProperties = {
     padding: "14px 18px",
     borderRadius: "14px",
     border: "1px solid rgba(16,185,129,0.6)",
-    background: "linear-gradient(120deg, rgba(16,185,129,0.25), rgba(34,197,94,0.25))",
+    background:
+      "linear-gradient(120deg, rgba(16,185,129,0.25), rgba(34,197,94,0.25))",
     color: "#ecfdf5",
     fontWeight: 600,
     cursor: "pointer",
@@ -110,7 +112,9 @@ export default function TokenPage() {
   return (
     <div style={panelStyle}>
       <div>
-        <label style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}>
+        <label
+          style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}
+        >
           Token Name
         </label>
         <input
@@ -123,7 +127,9 @@ export default function TokenPage() {
       </div>
 
       <div>
-        <label style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}>
+        <label
+          style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}
+        >
           Symbol
         </label>
         <input
@@ -136,7 +142,9 @@ export default function TokenPage() {
       </div>
 
       <div>
-        <label style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}>
+        <label
+          style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}
+        >
           Initial Supply
         </label>
         <input
@@ -149,7 +157,9 @@ export default function TokenPage() {
       </div>
 
       <div>
-        <label style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}>
+        <label
+          style={{ display: "block", marginBottom: "6px", color: "#94a3b8" }}
+        >
           Image URL
         </label>
         <input
@@ -178,4 +188,3 @@ export default function TokenPage() {
     </div>
   );
 }
-
