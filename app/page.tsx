@@ -87,6 +87,31 @@ export default function Home() {
       title: "Token PDA",
       body: "Derive PDAs for token accounts and associated token addresses.",
     },
+    {
+      href: "/liquidity",
+      title: "Liquidity",
+      body: "Create liquidity to your pool.",
+    },
+    {
+      href: "/will",
+      title: "Will",
+      body: "Create a will for your assets.",
+    },
+    {
+      href: "/nft",
+      title: "NFT",
+      body: "Create / Manage NFTs.",
+    },
+    {
+      href: "/swap",
+      title: "Swap Tokens",
+      body: "Swap tokens on DEX.",
+    },
+    {
+      href: "/close-pda",
+      title: "Close PDA",
+      body: "Close PDA accounts with empty balance to get back your sol.",
+    },
   ];
 
   const workflow = [
@@ -225,7 +250,9 @@ export default function Home() {
               }}
             >
               <strong>{callout.title}</strong>
-              <p style={{ marginTop: "8px", color: "#cbd5f5" }}>{callout.body}</p>
+              <p style={{ marginTop: "8px", color: "#cbd5f5" }}>
+                {callout.body}
+              </p>
             </div>
           ))}
         </div>
